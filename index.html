@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./public/bootstrap/bootstrap.min.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header row">
+        <div class="image-header col-12 text-center py-3 bg-primary">
+          <img
+            src="./public/image/banner.png"
+            class="img-fluid"
+            alt="image banner"
+          />
+        </div>
+        <nav class="col-12 bg-success p-3">
+          <ul class="nav nav-pills">
+            <li class="nav-items">
+              <a class="m-3 text-decoration-none text-light" href=""
+                >Đăng nhập</a
+              >
+            </li>
+            <li class="nav-items">
+              <a
+                id="openTourBtn"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+                class="m-3 text-decoration-none text-light"
+                href=""
+                >Mở tour</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">THÔNG TIN TOUR</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="mb-3">
+                  <label for="tourId" class="form-label">Mã tour</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="tourId"
+                    aria-describedby="Tour id"
+                    placeholder="Mã tour là XXY-YYYY: X là chữ hoa, Y là số"
+                  />
+                  <div id="tourIdHelper" class="form-text text-danger">
+                    * Mã tour là bắt buộc
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="tour" class="form-label">Hành trình</label>
+                  <select class="form-select" aria-label="Hành trình">
+                    <option value="Đà Nẵng - Huế - Nha Trang" selected>
+                      Đà Nẵng - Huế - Nha Trang
+                    </option>
+                    <option value="Sài Gòn - Miền Tây">
+                      Sài Gòn - Miền Tây
+                    </option>
+                    <option value="Nha Trang - Mũi Né">
+                      Nha Trang - Mũi Né
+                    </option>
+                    <option value="Hà Nội - Tây Bắc">Hà Nội - Tây Bắc</option>
+                    <option value="Đà Lạt - Tây Nguyên">
+                      Đà Lạt - Tây Nguyên
+                    </option>
+                  </select>
+                  <div id="tourHelper" class="form-text text-danger">*</div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="tour" class="form-label">Ngày khởi hành</label>
+                  <input type="date" class="w-100" />
+                  <div id="dayHelper" class="form-text text-danger">
+                    * Bắt buộc
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="tour" class="form-label">Thời gian</label>
+                  <select class="form-select" aria-label="Hành trình">
+                    <option value="2N 1Đ" selected>2N 1Đ</option>
+                    <option value="2N 2Đ" selected>2N 2Đ</option>
+                    <option value="3N 2Đ" selected>3N 2Đ</option>
+                    <option value="3N 3Đ" selected>3N 3Đ</option>
+                    <option value="4N 3Đ" selected>4N 3Đ</option>
+                  </select>
+                  <div id="tourHelper" class="form-text text-danger">*</div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="tour" class="form-label">Giá tour</label>
+                  <input type="text" class="w-100" placeholder="Số > 0" />
+                  <div id="tourHelper" class="form-text text-danger">*</div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="tour" class="form-label">Ảnh đại diện</label>
+                  <input type="file" class="w-100 border" />
+                  <div id="tourHelper" class="form-text text-danger">*</div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <div class="w-100 d-flex justify-content-between">
+                <button
+                  type="button"
+                  class="btn btn-danger col-5"
+                  data-bs-dismiss="modal"
+                >
+                  Lưu
+                </button>
+                <button type="button" class="btn btn-success col-5">Huỷ</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="main row text-center">
+        <h1>DANH SÁCH TOUR - DU LỊCH VIỆT</h1>
+        <!-- space entity -->
+        <span id="timer">&nbsp;</span>
+
+        <table class="table table-responsive table-hover">
+          <thead>
+            <tr>
+              <th scope="col">STT</th>
+              <th scope="col">Mã tour</th>
+              <th scope="col">Hành trình</th>
+              <th scope="col">Ngày khởi hành</th>
+              <th scope="col">Thời gian</th>
+              <th scope="col">Giá tour</th>
+              <th scope="col">Ảnh đại diện</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>Otto</td>
+              <td>Otto</td>
+              <td>Otto</td>
+              <td>Otto</td>
+            </tr>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>Otto</td>
+              <td>Otto</td>
+              <td>Otto</td>
+              <td>Otto</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="footer row p-2 text-center bg-primary p-3">
+        <div class="text-white">Trang web đơn giản sử dụng Bootstrap 5</div>
+      </div>
+    </div>
+
+    <script src="./public/bootstrap/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
