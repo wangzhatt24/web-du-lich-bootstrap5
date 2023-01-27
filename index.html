@@ -46,7 +46,7 @@
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-scrollable">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">THÔNG TIN TOUR</h5>
@@ -58,6 +58,10 @@
               ></button>
             </div>
             <div class="modal-body">
+              <a
+                class="text-danger text-decoration-none"
+                id="validateMessage"
+              ></a>
               <form>
                 <div class="mb-3">
                   <label for="tourId" class="form-label">Mã tour</label>
@@ -74,7 +78,7 @@
                 </div>
                 <div class="mb-3">
                   <label for="tour" class="form-label">Hành trình</label>
-                  <select class="form-select" aria-label="Hành trình">
+                  <select id="tour" class="form-select" aria-label="Hành trình">
                     <option value="Đà Nẵng - Huế - Nha Trang" selected>
                       Đà Nẵng - Huế - Nha Trang
                     </option>
@@ -93,16 +97,20 @@
                 </div>
 
                 <div class="mb-3">
-                  <label for="tour" class="form-label">Ngày khởi hành</label>
-                  <input type="date" class="w-100" />
-                  <div id="dayHelper" class="form-text text-danger">
+                  <label for="tourDay" class="form-label">Ngày khởi hành</label>
+                  <input id="tourDay" type="date" class="w-100" />
+                  <div id="tourDayHelper" class="form-text text-danger">
                     * Bắt buộc
                   </div>
                 </div>
 
                 <div class="mb-3">
-                  <label for="tour" class="form-label">Thời gian</label>
-                  <select class="form-select" aria-label="Hành trình">
+                  <label for="tourTime" class="form-label">Thời gian</label>
+                  <select
+                    id="tourTime"
+                    class="form-select"
+                    aria-label="Hành trình"
+                  >
                     <option value="2N 1Đ" selected>2N 1Đ</option>
                     <option value="2N 2Đ" selected>2N 2Đ</option>
                     <option value="3N 2Đ" selected>3N 2Đ</option>
@@ -113,40 +121,56 @@
                 </div>
 
                 <div class="mb-3">
-                  <label for="tour" class="form-label">Giá tour</label>
-                  <input type="text" class="w-100" placeholder="Số > 0" />
-                  <div id="tourHelper" class="form-text text-danger">*</div>
+                  <label for="tourPrice" class="form-label">Giá tour</label>
+                  <input
+                    id="tourPrice"
+                    type="text"
+                    class="w-100"
+                    placeholder="Số > 0"
+                  />
+                  <div id="tourPriceHelper" class="form-text text-danger">
+                    * Bắt buộc
+                  </div>
                 </div>
 
                 <div class="mb-3">
-                  <label for="tour" class="form-label">Ảnh đại diện</label>
-                  <input type="file" class="w-100 border" />
-                  <div id="tourHelper" class="form-text text-danger">*</div>
+                  <label for="coverImage" class="form-label"
+                    >Ảnh đại diện</label
+                  >
+                  <input id="coverImage" type="file" class="w-100 border p-1" />
+                  <div id="coverImageHelper" class="form-text text-danger">
+                    *
+                  </div>
+                </div>
+                <div class="d-none">
+                  <input type="reset" id="reset" />
                 </div>
               </form>
             </div>
             <div class="modal-footer">
               <div class="w-100 d-flex justify-content-between">
-                <button
-                  type="button"
-                  class="btn btn-danger col-5"
-                  data-bs-dismiss="modal"
-                >
+                <button type="button" class="btn btn-danger col-5" id="saveBtn">
                   Lưu
                 </button>
-                <button type="button" class="btn btn-success col-5">Huỷ</button>
+                <button
+                  type="button"
+                  id="cancelBtn"
+                  class="btn btn-success col-5"
+                >
+                  Huỷ
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="main row text-center">
+      <div class="main row text-center mt-3">
         <h1>DANH SÁCH TOUR - DU LỊCH VIỆT</h1>
         <!-- space entity -->
         <span id="timer">&nbsp;</span>
 
-        <table class="table table-responsive table-hover">
+        <table id="table" class="table table-responsive table-hover">
           <thead>
             <tr>
               <th scope="col">STT</th>
@@ -158,26 +182,7 @@
               <th scope="col">Ảnh đại diện</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>Otto</td>
-              <td>Otto</td>
-              <td>Otto</td>
-              <td>Otto</td>
-            </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>Otto</td>
-              <td>Otto</td>
-              <td>Otto</td>
-              <td>Otto</td>
-            </tr>
-          </tbody>
+          <tbody></tbody>
         </table>
       </div>
 
@@ -186,6 +191,7 @@
       </div>
     </div>
 
+    <script src="./public/js/mysrcipt.js"></script>
     <script src="./public/bootstrap/bootstrap.bundle.min.js"></script>
   </body>
 </html>
